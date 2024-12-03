@@ -9,6 +9,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 public class principal extends JFrame {
 
@@ -38,19 +43,23 @@ public class principal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(192, 192, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Cadastrar Aluno");
+		JButton btnNewButton = new JButton("CADASTRAR PRODUTO");
+		btnNewButton.setForeground(new Color(0, 64, 0));
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				CadastrarAluno ca = null;
+				CadastrarProdutos ca = null;
 				try {
-					ca = new CadastrarAluno();
+					ca = new CadastrarProdutos();
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -61,7 +70,17 @@ public class principal extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(133, 109, 146, 64);
+		btnNewButton.setBounds(78, 151, 289, 43);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("FAZENDA SÃO MARCOS");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblNewLabel.setBounds(43, 51, 364, 43);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\marco\\OneDrive - Instituto Federal do Rio Grande do Norte\\Documents\\ProjetoBD-3b\\src\\imagens\\plantio.png"));
+		lblNewLabel_1.setBounds(0, 0, 436, 263);
+		contentPane.add(lblNewLabel_1);
 	}
 }

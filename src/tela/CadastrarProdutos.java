@@ -8,7 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import banco.FabricaConexao;
-import dominio.Aluno;
+import dominio.Produto;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -26,16 +26,18 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.Color;
+import javax.swing.border.EtchedBorder;
+import java.awt.Font;
 
-public class CadastrarAluno extends JFrame {
+public class CadastrarProdutos extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
-	private JTextField textFieldMatricula;
-	private JTextField textFieldCurso;
-	private JTextField textFieldTelefone;
-	private JList listarAlunos;
-	private Aluno alunoEdicao;
+	private JTextField textFieldPreco;
+	private JTextField textFieldTipo;
+	private JTextField textFieldQuantidade;
+	private JList listarProdutos;
+	private Produto ProdutoEdicao;
 	private JButton btnNewButton;
 
 	/**
@@ -45,7 +47,7 @@ public class CadastrarAluno extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarAluno frame = new CadastrarAluno();
+					CadastrarProdutos frame = new CadastrarProdutos();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,10 +61,10 @@ public class CadastrarAluno extends JFrame {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public CadastrarAluno() throws ClassNotFoundException, SQLException {
-		setTitle("Cadastro de Aluno");
+	public CadastrarProdutos() throws ClassNotFoundException, SQLException {
+		setTitle("CADASTRO DE PRODUTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 587, 397);
+		setBounds(100, 100, 824, 519);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(192, 192, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,8 +73,8 @@ public class CadastrarAluno extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Castradar Aluno", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(0, 0, 173, 312);
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "CADASTRAR PRODUTO", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(29, 10, 836, 206);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -81,20 +83,20 @@ public class CadastrarAluno extends JFrame {
 		panel.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
-		textFieldMatricula = new JTextField();
-		textFieldMatricula.setBounds(36, 90, 107, 20);
-		panel.add(textFieldMatricula);
-		textFieldMatricula.setColumns(10);
+		textFieldPreco = new JTextField();
+		textFieldPreco.setBounds(36, 90, 107, 20);
+		panel.add(textFieldPreco);
+		textFieldPreco.setColumns(10);
 		
-		textFieldCurso = new JTextField();
-		textFieldCurso.setBounds(36, 136, 107, 20);
-		panel.add(textFieldCurso);
-		textFieldCurso.setColumns(10);
+		textFieldTipo = new JTextField();
+		textFieldTipo.setBounds(36, 136, 107, 20);
+		panel.add(textFieldTipo);
+		textFieldTipo.setColumns(10);
 		
-		textFieldTelefone = new JTextField();
-		textFieldTelefone.setBounds(36, 181, 107, 20);
-		panel.add(textFieldTelefone);
-		textFieldTelefone.setColumns(10);
+		textFieldQuantidade = new JTextField();
+		textFieldQuantidade.setBounds(36, 181, 107, 20);
+		panel.add(textFieldQuantidade);
+		textFieldQuantidade.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(36, 29, 46, 14);
@@ -116,7 +118,7 @@ public class CadastrarAluno extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					cadastrarAluno();
+					CadastrarProdutos();
 				} catch (ClassNotFoundException | SQLException e1) {
 					
 					e1.printStackTrace();
@@ -128,25 +130,38 @@ public class CadastrarAluno extends JFrame {
 		panel.add(btnNewButton);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Listagem de Alunos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(183, 0, 374, 312);
+		panel_1.setBounds(66, 191, 647, 273);
 		contentPane.add(panel_1);
+		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "LISTA DOS PRODUTOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 29, 338, 221);
+		scrollPane_1.setBounds(283, 21, 338, 221);
 		panel_1.add(scrollPane_1);
 		
-		listarAlunos =  new JList();
-		scrollPane_1.setViewportView(listarAlunos);
+		listarProdutos =  new JList();
+		scrollPane_1.setViewportView(listarProdutos);
+		
+		JButton btnNewButton_Editar = new JButton("Editar Dados");
+		btnNewButton_Editar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_Editar.setBounds(57, 70, 153, 31);
+		panel_1.add(btnNewButton_Editar);
+		
+		JButton btnNewButton_Remover = new JButton("Remover");
+		btnNewButton_Remover.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_Remover.setBounds(57, 121, 153, 31);
+		panel_1.add(btnNewButton_Remover);
 		
 		JButton btnNewButton_Exibir = new JButton("Exibir Dados");
+		btnNewButton_Exibir.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_Exibir.setBounds(64, 172, 146, 31);
+		panel_1.add(btnNewButton_Exibir);
 		btnNewButton_Exibir.addActionListener(new ActionListener() {
 			
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				Aluno alunoSelecionado = (Aluno) listarAlunos.getSelectedValue();
+				Produto produtoSelecionado = (Produto) listarAlunos.getSelectedValue();
 				
 				String msg = "Nome: " + alunoSelecionado.getNome() +
 						"\nMatricula " + alunoSelecionado.getMatricula() +
@@ -160,10 +175,6 @@ public class CadastrarAluno extends JFrame {
 			
 			
 		});
-		btnNewButton_Exibir.setBounds(20, 269, 107, 20);
-		panel_1.add(btnNewButton_Exibir);
-		
-		JButton btnNewButton_Remover = new JButton("Remover");
 		btnNewButton_Remover.addActionListener(new ActionListener() {
 			
 			
@@ -180,34 +191,29 @@ public class CadastrarAluno extends JFrame {
 			
 			
 		});
-		btnNewButton_Remover.setBounds(257, 269, 107, 20);
-		panel_1.add(btnNewButton_Remover);
-		
-		JButton btnNewButton_Editar = new JButton("Editar Dados");
 		btnNewButton_Editar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				iniciarEdicaoAluno();
+				iniciarEdicaoProduto();
 				
 			}
 			
 		});
-		btnNewButton_Editar.setBounds(137, 269, 107, 20);
-		panel_1.add(btnNewButton_Editar);
 		
-		atualizarListagemAlunos();
+		atualizarListagemProdutos();
 		
 	}
 	
 
+	
 	protected void removerDados() throws ClassNotFoundException, SQLException {
 		
 		if(listarAlunos.getSelectedIndex() == -1) {
 			exibirMensagemErro("Selecione um aluno");
 		}
 		
-		alunoEdicao = (Aluno) listarAlunos.getSelectedValue();
+		alunoEdicao = (Produto) listarAlunos.getSelectedValue();
 		
 		Connection conexao = FabricaConexao.criarConexao();
 		
@@ -228,13 +234,13 @@ public class CadastrarAluno extends JFrame {
 		
 	}
 
-	protected void iniciarEdicaoAluno() {
+	protected void iniciarEdicaoProduto() {
 		
 		if(listarAlunos.getSelectedIndex() == -1) {
 			exibirMensagemErro("Selecione um aluno");
 		}
 		
-		alunoEdicao = (Aluno) listarAlunos.getSelectedValue();
+		alunoEdicao = (Produto) listarAlunos.getSelectedValue();
 		
 		textFieldNome.setText(alunoEdicao.getNome());
 		textFieldMatricula.setText(alunoEdicao.getMatricula());
@@ -253,7 +259,7 @@ public class CadastrarAluno extends JFrame {
 	}
 	
 
-	private void atualizarListagemAlunos() throws ClassNotFoundException, SQLException {
+	private void atualizarListagemProdutos() throws ClassNotFoundException, SQLException {
 			
 		Connection conexao = FabricaConexao.criarConexao();
 		
@@ -261,25 +267,25 @@ public class CadastrarAluno extends JFrame {
 		PreparedStatement comando = conexao.prepareStatement(sql);
 		ResultSet resultado = comando.executeQuery();
 		
-		List<Aluno> alunosCadastrados = new ArrayList<Aluno>();
+		List<Produto> alunosCadastrados = new ArrayList<Produto>();
 		
 		while(resultado.next()) {
-			Aluno a = new Aluno();
+			Produto a = new Produto();
 			
-			a.setId(resultado.getInt("id_aluno"));
+			a.setId(resultado.getInt("id_produto"));
 			
 			a.setNome(resultado.getString("nome"));
-			a.setMatricula(resultado.getString("Matricula"));
-			a.setCurso(resultado.getString("Curso"));
-			a.setTelefone(resultado.getString("telefone"));
+			a.setPreco(resultado.getString("Preco"));
+			a.setTipo(resultado.getString("Tipo"));
+			a.setQuantidade(resultado.getString("Quantidade"));
 			
 			alunosCadastrados.add(a);
 		}
 		
-		DefaultListModel<Aluno> modelo = new DefaultListModel<>();
+		DefaultListModel<Produto> modelo = new DefaultListModel<>();
 		
 		for(int i =0; i < alunosCadastrados.size(); i ++) {
-			Aluno a = alunosCadastrados.get(i);
+			Produto a = alunosCadastrados.get(i);
 			modelo.addElement(a);
 		}
 		
@@ -321,7 +327,7 @@ public class CadastrarAluno extends JFrame {
 		
 		String sql = "INSERT INTO ALUNO (nome,matricula,curso,telefone) VALUES (?,?,?,?)";
 		
-		Aluno a = new Aluno(); 
+		Produto a = new Produto(); 
 		
 		a.setNome(textFieldNome.getText());
 		a.setMatricula(textFieldMatricula.getText());

@@ -9,7 +9,7 @@ public class FabricaConexao {
 		public static Connection criarConexao()
 				throws ClassNotFoundException, SQLException {
 				
-				String stringConexao = "jdbc:mysql://localhost:/faculdade?useTimezone=true&serverTimezone=UTC";
+				String stringConexao = "jdbc:mysql://localhost:/fazenda?useTimezone=true&serverTimezone=UTC";
 				String usuario = "root";
 				String senha = "mysqlROOT";
 				
