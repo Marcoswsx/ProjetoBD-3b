@@ -28,6 +28,7 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class CadastrarProdutos extends JFrame {
 
@@ -64,61 +65,74 @@ public class CadastrarProdutos extends JFrame {
 	public CadastrarProdutos() throws ClassNotFoundException, SQLException {
 		setTitle("CADASTRO DE PRODUTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 824, 519);
+		setBounds(100, 100, 827, 607);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(192, 192, 192));
+		contentPane.setBackground(new Color(16, 58, 14));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "CADASTRAR PRODUTO", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(29, 10, 836, 206);
+		panel.setBackground(new Color(16, 58, 14));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "CADASTRAR PRODUTO", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(225, 221, 189)));
+		panel.setBounds(29, 10, 762, 209);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setBounds(36, 45, 107, 20);
+		textFieldNome.setBounds(39, 80, 137, 34);
 		panel.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
 		textFieldPreco = new JTextField();
-		textFieldPreco.setBounds(36, 90, 107, 20);
+		textFieldPreco.setBounds(220, 80, 137, 34);
 		panel.add(textFieldPreco);
 		textFieldPreco.setColumns(10);
 		
 		textFieldTipo = new JTextField();
-		textFieldTipo.setBounds(36, 136, 107, 20);
+		textFieldTipo.setBounds(397, 80, 137, 34);
 		panel.add(textFieldTipo);
 		textFieldTipo.setColumns(10);
 		
 		textFieldQuantidade = new JTextField();
-		textFieldQuantidade.setBounds(36, 181, 107, 20);
+		textFieldQuantidade.setBounds(574, 80, 137, 34);
 		panel.add(textFieldQuantidade);
 		textFieldQuantidade.setColumns(10);
 		
-		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(36, 29, 46, 14);
+		JLabel lblNome = new JLabel("NOME");
+		lblNome.setForeground(new Color(225, 221, 189));
+		lblNome.setBackground(new Color(255, 255, 255));
+		lblNome.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNome.setBounds(76, 54, 63, 26);
 		panel.add(lblNome);
 		
-		JLabel lblNewLabel = new JLabel("Matricula");
-		lblNewLabel.setBounds(36, 76, 46, 14);
+		JLabel lblNewLabel = new JLabel("PREÇO");
+		lblNewLabel.setForeground(new Color(225, 221, 189));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setBounds(264, 55, 93, 25);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Curso");
-		lblNewLabel_1.setBounds(36, 121, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("TIPO");
+		lblNewLabel_1.setForeground(new Color(225, 221, 189));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(439, 52, 70, 31);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Telefone");
-		lblNewLabel_2.setBounds(36, 167, 46, 14);
+		JLabel lblNewLabel_2 = new JLabel("QUANTIDADE");
+		lblNewLabel_2.setForeground(new Color(225, 221, 189));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(591, 60, 120, 14);
 		panel.add(lblNewLabel_2);
 		
 		btnNewButton = new JButton("Cadastrar");
+		btnNewButton.setForeground(new Color(16, 58, 14));
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setFont(new Font("Arial Black", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					CadastrarProdutos();
+					cadastrarProdutos();
 				} catch (ClassNotFoundException | SQLException e1) {
 					
 					e1.printStackTrace();
@@ -126,13 +140,15 @@ public class CadastrarProdutos extends JFrame {
 			}
 
 		});
-		btnNewButton.setBounds(36, 227, 107, 23);
+		btnNewButton.setBounds(273, 144, 236, 44);
 		panel.add(btnNewButton);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(66, 191, 647, 273);
+		panel_1.setForeground(new Color(16, 58, 14));
+		panel_1.setBackground(new Color(9, 53, 21));
+		panel_1.setBounds(76, 265, 647, 273);
 		contentPane.add(panel_1);
-		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "LISTA DOS PRODUTOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "LISTA DOS PRODUTOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(225, 221, 189)));
 		panel_1.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -140,33 +156,40 @@ public class CadastrarProdutos extends JFrame {
 		panel_1.add(scrollPane_1);
 		
 		listarProdutos =  new JList();
+		listarProdutos.setBackground(new Color(225, 221, 189));
 		scrollPane_1.setViewportView(listarProdutos);
 		
-		JButton btnNewButton_Editar = new JButton("Editar Dados");
-		btnNewButton_Editar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnNewButton_Editar.setBounds(57, 70, 153, 31);
+		JButton btnNewButton_Editar = new JButton("Editar Produto");
+		btnNewButton_Editar.setForeground(new Color(255, 255, 255));
+		btnNewButton_Editar.setBackground(new Color(16, 58, 14));
+		btnNewButton_Editar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton_Editar.setBounds(55, 53, 175, 31);
 		panel_1.add(btnNewButton_Editar);
 		
 		JButton btnNewButton_Remover = new JButton("Remover");
-		btnNewButton_Remover.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnNewButton_Remover.setBounds(57, 121, 153, 31);
+		btnNewButton_Remover.setForeground(new Color(255, 255, 255));
+		btnNewButton_Remover.setBackground(new Color(16, 58, 14));
+		btnNewButton_Remover.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton_Remover.setBounds(55, 120, 175, 31);
 		panel_1.add(btnNewButton_Remover);
 		
-		JButton btnNewButton_Exibir = new JButton("Exibir Dados");
-		btnNewButton_Exibir.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnNewButton_Exibir.setBounds(64, 172, 146, 31);
+		JButton btnNewButton_Exibir = new JButton("Exibir Produto");
+		btnNewButton_Exibir.setForeground(new Color(255, 255, 255));
+		btnNewButton_Exibir.setBackground(new Color(16, 58, 14));
+		btnNewButton_Exibir.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton_Exibir.setBounds(55, 189, 175, 31);
 		panel_1.add(btnNewButton_Exibir);
 		btnNewButton_Exibir.addActionListener(new ActionListener() {
 			
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				Produto produtoSelecionado = (Produto) listarAlunos.getSelectedValue();
+				Produto produtoSelecionado = (Produto) listarProdutos.getSelectedValue();
 				
-				String msg = "Nome: " + alunoSelecionado.getNome() +
-						"\nMatricula " + alunoSelecionado.getMatricula() +
-					    "\nCurso " + alunoSelecionado.getCurso() +
-					    "\nTelefone " + alunoSelecionado.getTelefone();
+				String msg = "Nome: " + produtoSelecionado.getNome() +
+						"\npreco " + produtoSelecionado.getPreco() +
+					    "\nTipo " + produtoSelecionado.getTipo() +
+					    "\nQuantidade " + produtoSelecionado.getQuantidade();
 				
 				ExibirMensagem(msg);
 				
@@ -209,24 +232,24 @@ public class CadastrarProdutos extends JFrame {
 	
 	protected void removerDados() throws ClassNotFoundException, SQLException {
 		
-		if(listarAlunos.getSelectedIndex() == -1) {
-			exibirMensagemErro("Selecione um aluno");
+		if(listarProdutos.getSelectedIndex() == -1) {
+			exibirMensagemErro("Selecione um Produto");
 		}
 		
-		alunoEdicao = (Produto) listarAlunos.getSelectedValue();
+		ProdutoEdicao = (Produto) listarProdutos.getSelectedValue();
 		
 		Connection conexao = FabricaConexao.criarConexao();
 		
-		String sql = "DELETE FROM ALUNO WHERE ID_ALUNO =?";
+		String sql = "DELETE FROM PRODUTO WHERE ID_PRODUTO =?";
 		
 		PreparedStatement comando = conexao.prepareStatement(sql);
 		
-		comando.setInt(1, alunoEdicao.getId());
+		comando.setInt(1, ProdutoEdicao.getId());
 		comando.executeUpdate();
 		
-		ExibirMensagem("Dados Removidos");
+		ExibirMensagem("Produto Removidos");
 		
-		atualizarListagemAlunos();
+		atualizarListagemProdutos();
 		
 		comando.close();
 		conexao.close();
@@ -236,16 +259,16 @@ public class CadastrarProdutos extends JFrame {
 
 	protected void iniciarEdicaoProduto() {
 		
-		if(listarAlunos.getSelectedIndex() == -1) {
-			exibirMensagemErro("Selecione um aluno");
+		if(listarProdutos.getSelectedIndex() == -1) {
+			exibirMensagemErro("Selecione um Produto");
 		}
 		
-		alunoEdicao = (Produto) listarAlunos.getSelectedValue();
+		ProdutoEdicao = (Produto) listarProdutos.getSelectedValue();
 		
-		textFieldNome.setText(alunoEdicao.getNome());
-		textFieldMatricula.setText(alunoEdicao.getMatricula());
-		textFieldCurso.setText(alunoEdicao.getCurso());
-		textFieldTelefone.setText(alunoEdicao.getTelefone());
+		textFieldNome.setText(ProdutoEdicao.getNome());
+		textFieldPreco.setText(ProdutoEdicao.getPreco());
+		textFieldTipo.setText(ProdutoEdicao.getTipo());
+		textFieldQuantidade.setText(ProdutoEdicao.getQuantidade());
 		
 		btnNewButton.setText("Editar Dados");
 		
@@ -253,7 +276,7 @@ public class CadastrarProdutos extends JFrame {
 
 	protected void ExibirMensagem(String msg) {
 		
-		JOptionPane.showMessageDialog(null, msg, "info" , JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, msg, "produto" , JOptionPane.INFORMATION_MESSAGE);
 		
 		
 	}
@@ -263,11 +286,11 @@ public class CadastrarProdutos extends JFrame {
 			
 		Connection conexao = FabricaConexao.criarConexao();
 		
-		String sql = "SELECT * FROM ALUNO";
+		String sql = "SELECT * FROM PRODUTO";
 		PreparedStatement comando = conexao.prepareStatement(sql);
 		ResultSet resultado = comando.executeQuery();
 		
-		List<Produto> alunosCadastrados = new ArrayList<Produto>();
+		List<Produto> ProdutosCadastrados = new ArrayList<Produto>();
 		
 		while(resultado.next()) {
 			Produto a = new Produto();
@@ -279,17 +302,17 @@ public class CadastrarProdutos extends JFrame {
 			a.setTipo(resultado.getString("Tipo"));
 			a.setQuantidade(resultado.getString("Quantidade"));
 			
-			alunosCadastrados.add(a);
+			ProdutosCadastrados.add(a);
 		}
 		
 		DefaultListModel<Produto> modelo = new DefaultListModel<>();
 		
-		for(int i =0; i < alunosCadastrados.size(); i ++) {
-			Produto a = alunosCadastrados.get(i);
+		for(int i =0; i < ProdutosCadastrados.size(); i ++) {
+			Produto a = ProdutosCadastrados.get(i);
 			modelo.addElement(a);
 		}
 		
-		listarAlunos.setModel(modelo);
+		listarProdutos.setModel(modelo);
 		
 		comando.close();
 		conexao.close();
@@ -298,23 +321,23 @@ public class CadastrarProdutos extends JFrame {
 	}
 	
 
-	protected void cadastrarAluno() throws ClassNotFoundException, SQLException {
+	protected void cadastrarProdutos() throws ClassNotFoundException, SQLException {
 		
 		
 		if(textFieldNome.getText() == null || textFieldNome.getText().isEmpty()) {
 			exibirMensagemErro("Nome não pode ser vazio.");
 			return;
 		}
-		if(textFieldMatricula.getText() == null || textFieldMatricula.getText().isEmpty()) {
-			exibirMensagemErro("matricula não pode ser vazio.");
+		if(textFieldPreco.getText() == null || textFieldPreco.getText().isEmpty()) {
+			exibirMensagemErro("Preco não pode ser vazio.");
 			return;
 		}
-		if(textFieldCurso.getText() == null || textFieldCurso.getText().isEmpty()) {
-			exibirMensagemErro("Curso não pode ser vazio.");
+		if(textFieldTipo.getText() == null || textFieldTipo.getText().isEmpty()) {
+			exibirMensagemErro("Tipo não pode ser vazio.");
 			return;
 		}
-		if(textFieldTelefone.getText() == null || textFieldTelefone.getText().isEmpty()) {
-			exibirMensagemErro("Telefone não pode ser vazio.");
+		if(textFieldQuantidade.getText() == null || textFieldQuantidade.getText().isEmpty()) {
+			exibirMensagemErro("Quantidade não pode ser vazio.");
 			return;
 		}
 		
@@ -325,21 +348,21 @@ public class CadastrarProdutos extends JFrame {
 		
 		
 		
-		String sql = "INSERT INTO ALUNO (nome,matricula,curso,telefone) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO PRODUTO (nome,preco,tipo,quantidade) VALUES (?,?,?,?)";
 		
 		Produto a = new Produto(); 
 		
 		a.setNome(textFieldNome.getText());
-		a.setMatricula(textFieldMatricula.getText());
-		a.setCurso(textFieldCurso.getText());
-		a.setTelefone(textFieldTelefone.getText());
+		a.setPreco(textFieldPreco.getText());
+		a.setTipo(textFieldTipo.getText());
+		a.setQuantidade(textFieldQuantidade.getText());
 		
 		PreparedStatement comando = conexao.prepareStatement(sql);
 		
 		comando.setString(1, a.getNome());
-		comando.setString(2, a.getMatricula());
-		comando.setString(3, a.getCurso());
-		comando.setString(4, a.getTelefone());
+		comando.setString(2, a.getPreco());
+		comando.setString(3, a.getTipo());
+		comando.setString(4, a.getQuantidade());
 		comando.execute();
 		
 		System.out.println("Fechando conexão...");
@@ -347,46 +370,46 @@ public class CadastrarProdutos extends JFrame {
 		comando.close();
 		conexao.close();
 		
-		JOptionPane.showMessageDialog(null, "aluno foi cadastrado com sucesso!", "Info", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Produto foi cadastrado com sucesso!", "fazenda", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 		else if(btnNewButton.getText().equals("Editar Dados")) {
 			
 			Connection conexao = FabricaConexao.criarConexao();
 			
-			alunoEdicao.setNome(textFieldNome.getText());
-			alunoEdicao.setMatricula(textFieldMatricula.getText());
-			alunoEdicao.setCurso(textFieldCurso.getText());
-			alunoEdicao.setTelefone(textFieldTelefone.getText());
+			ProdutoEdicao.setNome(textFieldNome.getText());
+			ProdutoEdicao.setPreco(textFieldPreco.getText());
+			ProdutoEdicao.setTipo(textFieldTipo.getText());
+			ProdutoEdicao.setQuantidade(textFieldQuantidade.getText());
 			
-			String sql = "UPDATE ALUNO SET NOME =?, MATRICULA =?, CURSO =?, TELEFONE =? WHERE ID_ALUNO=?";
+			String sql = "UPDATE PRODUTO SET NOME =?, PRECO =?, TIPO =?, QUANTIDADE =? WHERE ID_PRODUTO=?";
 			
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
-			comando.setString(1, alunoEdicao.getNome());
-			comando.setString(2, alunoEdicao.getMatricula());
-			comando.setString(3, alunoEdicao.getCurso());
-			comando.setString(4, alunoEdicao.getTelefone());
-			comando.setInt(5, alunoEdicao.getId());
+			comando.setString(1, ProdutoEdicao.getNome());
+			comando.setString(2, ProdutoEdicao.getPreco());
+			comando.setString(3, ProdutoEdicao.getTipo());
+			comando.setString(4, ProdutoEdicao.getQuantidade());
+			comando.setInt(5, ProdutoEdicao.getId());
 			comando.executeUpdate();
 			
-			ExibirMensagem("Dados Alterado");
+			ExibirMensagem("Produtos Alterado");
 			
 			comando.close();
 			conexao.close();
 			
-			alunoEdicao = null;
+			ProdutoEdicao = null;
 			
 		}
 		
 		
-		atualizarListagemAlunos();
+		atualizarListagemProdutos();
 		
 		textFieldNome.setText("");
-		textFieldMatricula.setText("");
-		textFieldCurso.setText("");
-		textFieldTelefone.setText("");
-		
+		textFieldPreco.setText("");
+		textFieldTipo.setText("");
+		textFieldQuantidade.setText("");
+		btnNewButton.setText("Cadastrar");
 		
 	}
 

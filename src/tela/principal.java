@@ -74,13 +74,15 @@ public class principal extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("FAZENDA SÃO MARCOS");
+		lblNewLabel.setForeground(new Color(16, 58, 14));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNewLabel.setBounds(43, 51, 364, 43);
+		lblNewLabel.setBounds(43, 40, 364, 43);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\marco\\OneDrive - Instituto Federal do Rio Grande do Norte\\Documents\\ProjetoBD-3b\\src\\imagens\\plantio.png"));
-		lblNewLabel_1.setBounds(0, 0, 436, 263);
+		lblNewLabel_1.setBackground(new Color(255, 255, 255));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\marco\\OneDrive - Instituto Federal do Rio Grande do Norte\\Documents\\ProjetoBD-3b\\imagens\\soja2.jpg"));
+		lblNewLabel_1.setBounds(0, 0, 455, 572);
 		contentPane.add(lblNewLabel_1);
 	}
 }
