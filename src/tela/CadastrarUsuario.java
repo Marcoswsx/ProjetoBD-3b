@@ -124,6 +124,7 @@ public class CadastrarUsuario extends JFrame {
 		contentPane.add(passwordFieldSenha);
 	}
             //metodo para cadastrar aluno
+	
 	protected void cadastrarUsuario() throws ClassNotFoundException, SQLException {
 		
 		String nome = textFieldNome.getText();
